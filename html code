@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Cards</title>
+    <style>
+        .profile-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            margin: 20px auto;
+        }
+        .profile-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        .profile-card h2 {
+            margin: 10px 0;
+        }
+        .profile-card p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="profile-card-container"></div>
+
+    <script>
+        function createProfileCard({ name, greeting, imageSrc }) {
+            const card = document.createElement('div');
+            card.className = 'profile-card';
+
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.alt = ${name}'s profile picture;
+
+            const nameElement = document.createElement('h2');
+            nameElement.textContent = name;
+
+            const greetingElement = document.createElement('p');
+            greetingElement.textContent = greeting;
+
+            card.appendChild(img);
+            card.appendChild(nameElement);
+            card.appendChild(greetingElement);
+
+            return card;
+        }
+
+        const profileCardContainer = document.getElementById('profile-card-container');
+
+        const users = [
+            { name: 'John Doe', greeting: 'Hello, welcome to my profile!', imageSrc: 'https://via.placeholder.com/100' },
+            { name: 'Jane Smith', greeting: 'Hi there, nice to meet you!', imageSrc: 'https://via.placeholder.com/100' },
+            { name: 'Alice Johnson', greeting: 'Greetings from Alice!', imageSrc: 'https://via.placeholder.com/100' }
+        ];
+
+        users.forEach(user => {
+            const profileCard = createProfileCard(user);
+            profileCardContainer.appendChild(profileCard);
+        });
+    </script>
+</body>
+</html>
