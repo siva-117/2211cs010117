@@ -1,0 +1,53 @@
+import React, { useReducer } from 'react';
+// Reducer function to track the number of apples
+function appleReducer(state = 3, action) {
+  switch (action.type) {
+    case 'ADD_APPLE':
+      return state + 1;
+    case 'Eat_APPLE':
+      return state - 1;
+    default:
+      return state;
+  }
+}
+function App() {
+  const [count, dispatch] = useReducer(appleReducer, 3);
+  return (
+    <div style={{ textAlign: 'center', padding: '50px', fontSize: '20px', backgroundColor: 'lightblue', margin: 'auto', width: '50%', borderRadius: '10px', marginTop: '50px' }}>
+      {Array.from({ length: count }).map((_, index) => (
+        <img key={index} src="data:image/jpeg;base64,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" alt='Apple' style={{ width: '100px', height: '100px', margin: '5px', borderRadius: '10px' }} />
+      ))}
+      <h1>Apple Counter</h1>
+      <p>Number of apples: {count}</p>
+      <button
+        style={{ margin: '10px', padding: '10px 20px', fontSize: '16px', backgroundColor: 'green', color: 'white', border: 'none', borderRadius: '5px' }}
+        onClick={() => dispatch({ type: 'ADD_APPLE' })}
+      >
+        Add Apple
+      </button>
+      <button
+        style={{ margin: '10px', padding: '10px 20px', fontSize: '16px', backgroundColor: 'red', color: 'white', border: 'none', borderRadius: '5px' }}
+        onClick={() => dispatch({ type: 'Eat_APPLE' })}
+      >
+        Eat Apple
+      </button>
+    </div>
+  );
+}
+export default App;
+import React,{useState,useEffect,use,useRef} from "react";
+function CounterWithPrev(){
+  const[count,setCount]=useState(0);
+  const prevCountRef=useRef();
+  useEffect(()=>{
+    prevCountRef.current=count;
+  },[count])
+  return(
+    <div>
+      <p>Current count:{count}</p>
+      <p>preCount:{prevCountRef.current}</p>
+      <button onClick={()=>setCount(count+1)}>Increment</button>
+    </div>
+  )
+}
+export default CounterWithPrev;
